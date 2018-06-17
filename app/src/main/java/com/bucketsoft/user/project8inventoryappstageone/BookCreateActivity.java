@@ -60,9 +60,9 @@ public class BookCreateActivity extends AppCompatActivity {
         int quantityInt = -1;
         Double priceDouble = -1.0;
 
-        if(!TextUtils.isEmpty(priceString) && !TextUtils.isEmpty(quantityString) ) {
-             quantityInt = Integer.valueOf(quantityString);
-             priceDouble = Double.valueOf(priceString);
+        if (!TextUtils.isEmpty(priceString) && !TextUtils.isEmpty(quantityString)) {
+            quantityInt = Integer.valueOf(quantityString);
+            priceDouble = Double.valueOf(priceString);
         }
 
         if (

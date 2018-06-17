@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mCursorAdapter = new BookstoreCursorAdapter(this, null);
         bookListView.setAdapter(mCursorAdapter);
 
-        //TODO: implement listview onclick listener.
-
-        //  insertBook();  // for testing purposes
 
         bookListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -77,8 +74,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
     private void insertBook() {
-        // Create a ContentValues object where column names are the keys,
-        // and Toto's pet attributes are the values.
+
         ContentValues values = new ContentValues();
         values.put(BookStoreContract.BookStoreEntry.COLUMN_PRODUCT_NAME, "Gurkiko");
         values.put(BookStoreContract.BookStoreEntry.COLUMN_PRICE, 13.90);
@@ -86,10 +82,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         values.put(BookStoreContract.BookStoreEntry.COLUMN_SUPPLIER_NAME, "ALIS");
         values.put(BookStoreContract.BookStoreEntry.COLUMN_SUPPLIER_PHONE, "5350298897");
 
-        // Insert a new row for Toto into the provider using the ContentResolver.
-        // Use the {@link PetEntry#CONTENT_URI} to indicate that we want to insert
-        // into the pets database table.
-        // Receive the new content URI that will allow us to access Toto's data in the future.
+
         Uri newUri = getContentResolver().insert(BookStoreContract.BookStoreEntry.CONTENT_URI, values);
 
         Log.d("TAGX", newUri.toString());

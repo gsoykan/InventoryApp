@@ -26,7 +26,6 @@ public class BookStoreDBHelper  extends SQLiteOpenHelper {
                 + BookStoreContract.BookStoreEntry.COLUMN_SUPPLIER_NAME + " TEXT NOT NULL DEFAULT 'UNKNOWN SUPPLIER NAME', "
                 + BookStoreContract.BookStoreEntry.COLUMN_SUPPLIER_PHONE + " TEXT NOT NULL DEFAULT 'UNKNOWN SUPPLIER PHONE');";
 
-        // Execute the SQL statement
         sqLiteDatabase.execSQL(SQL_CREATE_BOOKSTORE_TABLE);
 
 

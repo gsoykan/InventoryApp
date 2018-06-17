@@ -28,17 +28,15 @@ public class BookDetailActivity extends AppCompatActivity implements LoaderManag
     private Uri mCurrentBookUri;
 
 
-  private   TextView bookNameTextView;
-    private   TextView bookQuantityTextView;
+    private TextView bookNameTextView;
+    private TextView bookQuantityTextView;
     private TextView bookPriceTextView;
     private TextView supplierNameTextView;
-    private  TextView supplierPhoneTextView;
-    private  Button orderFromSupplierButton;
+    private TextView supplierPhoneTextView;
+    private Button orderFromSupplierButton;
 
-    private  Button increaseBookQuantityButton;
-    private  Button decreaseBookQuantityButton;
-
-
+    private Button increaseBookQuantityButton;
+    private Button decreaseBookQuantityButton;
 
 
     @Override
@@ -47,26 +45,19 @@ public class BookDetailActivity extends AppCompatActivity implements LoaderManag
         setContentView(R.layout.activity_book_detail);
 
         Intent intent = getIntent();
-        mCurrentBookUri  = intent.getData();
-        getLoaderManager().initLoader(EXISTING_BOOKSTORE_LOADER,null,this);
-
+        mCurrentBookUri = intent.getData();
+        getLoaderManager().initLoader(EXISTING_BOOKSTORE_LOADER, null, this);
 
 
         bookNameTextView = findViewById(R.id.book_name_text_detail);
         bookPriceTextView = findViewById(R.id.book_price_text_detail);
-        bookQuantityTextView =findViewById(R.id.book_quantity_text_detail);
-        supplierNameTextView =findViewById(R.id.book_supplier_name_text_detail);
-        supplierPhoneTextView =findViewById(R.id.book_supplier_phone_text_detail);
-        orderFromSupplierButton =findViewById(R.id.book_supplier_order_button_detail);
+        bookQuantityTextView = findViewById(R.id.book_quantity_text_detail);
+        supplierNameTextView = findViewById(R.id.book_supplier_name_text_detail);
+        supplierPhoneTextView = findViewById(R.id.book_supplier_phone_text_detail);
+        orderFromSupplierButton = findViewById(R.id.book_supplier_order_button_detail);
 
         increaseBookQuantityButton = findViewById(R.id.book_quantity_increase_button_detail);
         decreaseBookQuantityButton = findViewById(R.id.book_quantity_decrease_button_detail);
-
-
-
-
-
-
 
 
     }
@@ -76,15 +67,15 @@ public class BookDetailActivity extends AppCompatActivity implements LoaderManag
         public void onClick(View view) {
             //TODO: UPDATE THE QUANTITY OF THE SELECTED ITEM, FOR THAT GET THE ID OF IT AND MAKE THE UPDATE FROM PROVIDER
             // Integer bookQuantity = cursor.getInt(cursor.getColumnIndex(BookStoreContract.BookStoreEntry.COLUMN_QUANTITY));
-            if(Integer.valueOf(bookQuantityTextView.getText().toString()) < 1 ){
+            if (Integer.valueOf(bookQuantityTextView.getText().toString()) < 1) {
                 Toast.makeText(BookDetailActivity.this, R.string.book_quantity_button_toast_message, Toast.LENGTH_LONG).show();
             } else {
                 int prevQuantity = Integer.valueOf(bookQuantityTextView.getText().toString());
-                int newQuantity = prevQuantity -1 ;
+                int newQuantity = prevQuantity - 1;
                 ContentValues values = new ContentValues();
-                values.put(BookStoreContract.BookStoreEntry.COLUMN_QUANTITY, newQuantity );
-                int rowsAffected = BookDetailActivity.this.getContentResolver().update(mCurrentBookUri, values, null,null);
-                if(rowsAffected ==1 ){
+                values.put(BookStoreContract.BookStoreEntry.COLUMN_QUANTITY, newQuantity);
+                int rowsAffected = BookDetailActivity.this.getContentResolver().update(mCurrentBookUri, values, null, null);
+                if (rowsAffected == 1) {
                     Toast.makeText(BookDetailActivity.this, R.string.book_sold_success, Toast.LENGTH_LONG).show();
                     bookQuantityTextView.setText(String.valueOf(newQuantity));
                 }
@@ -94,27 +85,25 @@ public class BookDetailActivity extends AppCompatActivity implements LoaderManag
     private View.OnClickListener increaseQuantityListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            //TODO: UPDATE THE QUANTITY OF THE SELECTED ITEM, FOR THAT GET THE ID OF IT AND MAKE THE UPDATE FROM PROVIDER
-            // Integer bookQuantity = cursor.getInt(cursor.getColumnIndex(BookStoreContract.BookStoreEntry.COLUMN_QUANTITY));
 
-                int prevQuantity = Integer.valueOf(bookQuantityTextView.getText().toString());
-                int newQuantity = prevQuantity + 1 ;
-                ContentValues values = new ContentValues();
-                values.put(BookStoreContract.BookStoreEntry.COLUMN_QUANTITY, newQuantity );
-                int rowsAffected = BookDetailActivity.this.getContentResolver().update(mCurrentBookUri, values, null,null);
-                if(rowsAffected ==1 ){
-                    Toast.makeText(BookDetailActivity.this, R.string.book_increase_success, Toast.LENGTH_LONG).show();
-                    bookQuantityTextView.setText(String.valueOf(newQuantity));
-                }
+            int prevQuantity = Integer.valueOf(bookQuantityTextView.getText().toString());
+            int newQuantity = prevQuantity + 1;
+            ContentValues values = new ContentValues();
+            values.put(BookStoreContract.BookStoreEntry.COLUMN_QUANTITY, newQuantity);
+            int rowsAffected = BookDetailActivity.this.getContentResolver().update(mCurrentBookUri, values, null, null);
+            if (rowsAffected == 1) {
+                Toast.makeText(BookDetailActivity.this, R.string.book_increase_success, Toast.LENGTH_LONG).show();
+                bookQuantityTextView.setText(String.valueOf(newQuantity));
             }
+        }
     };
 
     private View.OnClickListener dialListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if(supplierPhoneTextView.getText().toString() != ""){
+            if (supplierPhoneTextView.getText().toString() != "") {
                 dialPhoneNumber(supplierPhoneTextView.getText().toString());
-            }else {
+            } else {
                 Toast.makeText(getApplicationContext(), R.string.call_can_not_made, Toast.LENGTH_LONG).show();
             }
         }
@@ -130,18 +119,18 @@ public class BookDetailActivity extends AppCompatActivity implements LoaderManag
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater  = getMenuInflater();
+        MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.product_detail_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.delete_book:
                 deleteBook();
-                return  true;
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -176,23 +165,23 @@ public class BookDetailActivity extends AppCompatActivity implements LoaderManag
                 BookStoreContract.BookStoreEntry.COLUMN_SUPPLIER_NAME,
                 BookStoreContract.BookStoreEntry.COLUMN_SUPPLIER_PHONE};
 
-        // This loader will execute the ContentProvider's query method on a background thread
-        return new CursorLoader(this,   // Parent activity context
-                mCurrentBookUri,         // Query the content URI for the current pet
-                projection,             // Columns to include in the resulting Cursor
-                null,                   // No selection clause
-                null,                   // No selection arguments
-                null);// Default sort order    }
+
+        return new CursorLoader(this,
+                mCurrentBookUri,
+                projection,
+                null,
+                null,
+                null);
 
     }
+
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         if (cursor == null || cursor.getCount() < 1) {
             return;
         }
-            //TODO : HANDLE ITEM LOADING
+        //TODO : HANDLE ITEM LOADING
         if (cursor.moveToFirst()) {
-            // Find the columns of pet attributes that we're interested in
             int idColumnIndex = cursor.getColumnIndex(BookStoreContract.BookStoreEntry._ID);
             int nameColumnIndex = cursor.getColumnIndex(BookStoreContract.BookStoreEntry.COLUMN_PRODUCT_NAME);
             int priceColumnIndex = cursor.getColumnIndex(BookStoreContract.BookStoreEntry.COLUMN_PRICE);
@@ -213,9 +202,7 @@ public class BookDetailActivity extends AppCompatActivity implements LoaderManag
             supplierNameTextView.setText(supName);
             supplierPhoneTextView.setText(supPhone);
 
-            // Gender is a dropdown spinner, so map the constant value from the database
-            // into one of the dropdown options (0 is Unknown, 1 is Male, 2 is Female).
-            // Then call setSelection() so that option is displayed on screen as the current selection.
+
         }
 
         orderFromSupplierButton.setOnClickListener(dialListener);
