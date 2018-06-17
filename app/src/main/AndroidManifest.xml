@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bucketsoft.user.project8inventoryappstageone">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name=".DataBaseRelated.BookStoreProvider"
+            android:authorities="com.bucketsoft.gsoykan.android.bookstore"
+            android:exported="false" />
+
+        <activity android:name=".BookDetailActivity" />
+        <activity android:name=".BookCreateActivity"></activity>
     </application>
 
 </manifest>

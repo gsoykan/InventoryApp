@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Project8InventoryAppStageOne</string>
+    <string name="sale_button_text">SALE!</string>
+    <string name="book_quantity_button_toast_message">Quantity of the book can not be lowered</string>
+    <string name="book_sold_success">One Book is Sold!</string>
+    <string name="order_supplier_book_detail">ORDER</string>
+    <string name="call_can_not_made">Call can not be made !</string>
+    <string name="delete_book">DELETE BOOK</string>
+    <string name="detail_delete_book_failed">Deletion of this item has failed!</string>
+    <string name="detail_delete_book_successful">The Book has been deleted!</string>
+    <string name="increase_book_quantity_detail">INCREASE</string>
+    <string name="decrease_book_quantity_detail">DECREASE</string>
+    <string name="book_increase_success">New book has arrived!</string>
+    <string name="book_create_button_text">CREATE THE BOOK</string>
+    <string name="book_name_hint">Enter the book name pls</string>
+    <string name="book_price_hint">Enter the Book Price pls</string>
+    <string name="book_quantity_hint">Enter the Book Quantity pls</string>
+    <string name="supplier_name_hint">Enter the Supplier name pls</string>
+    <string name="supplier_phone_hint">Enter the Supplier Phone pls</string>
+    <string name="insert_book_failed">No book is inserted ! make sure fields are relevant and correct</string>
+    <string name="book_insert_failed">Book insertion has failed</string>
+    <string name="book_insert_successful">Book successfully created</string>
+    <string name="empty_view_title_text">add action button to add new books pls</string>
 </resources>

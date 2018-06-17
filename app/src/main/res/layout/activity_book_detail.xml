@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookDetailActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/book_name_text_detail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+    <TextView
+        android:id="@+id/book_price_text_detail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <RelativeLayout
+        android:id="@+id/quantity_relative_layout_detail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+        <TextView
+            android:id="@+id/book_quantity_text_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            />
+
+        <Button
+            android:id="@+id/book_quantity_increase_button_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/increase_book_quantity_detail"
+            android:layout_toStartOf="@id/book_quantity_decrease_button_detail"/>
+
+        <Button
+            android:id="@+id/book_quantity_decrease_button_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/decrease_book_quantity_detail"
+            android:layout_alignParentEnd="true"
+
+            />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/book_supplier_name_text_detail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+    <TextView
+        android:id="@+id/book_supplier_phone_text_detail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+    <Button
+        android:id="@+id/book_supplier_order_button_detail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/order_supplier_book_detail"/>
+
+</LinearLayout>
